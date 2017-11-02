@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --history-api-fallback --progress --inline --watch",
-    "build": "npx rimraf dist && webpack && cp -r app/assets dist/ && cp app/manifest.json dist/",
+    "build": "npx rimraf dist && webpack",
     "deploy": "scp -r dist/* do.original:/var/www/tonylefler.com/public/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
