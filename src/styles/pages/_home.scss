@@ -1,9 +1,13 @@
-
+.home-page {
+  position: relative;
+  z-index: 1;
+}
 
 .hero {
   text-align: center;
   padding: 4rem 0;
   user-select: none;
+  padding-bottom: 1000px;
 }
 
 .hero__name {
@@ -16,6 +20,7 @@
   display: inline-block;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
+  background-color: rgba(#fff, .6);
 }
 
 .hero__title {

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 
 import './styles/main.scss';
 import { router } from './pages/router';
+import './components/background';
 
 Vue.use(VueRouter);
 
@@ -11,6 +12,7 @@ new Vue({
   router,
   template:
 `<div>
+    <tl-background></tl-background>
     <router-view></router-view>
 </div>`
 });
