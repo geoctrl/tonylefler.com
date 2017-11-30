@@ -14,12 +14,13 @@
     "url": "git+https://github.com/geoctrl/tonylefler.com.git"
   },
   "author": "@geoctrl",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/geoctrl/tonylefler.com/issues"
   },
   "homepage": "https://github.com/geoctrl/tonylefler.com#readme",
   "dependencies": {
+    "three": "^0.88.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
@@ -29,6 +30,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "css-loader": "^0.28.7",
+    "file-loader": "^1.1.5",
     "html-webpack-plugin": "^2.30.1",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.8",
