@@ -1,4 +1,4 @@
-import { Toggle } from "../common/toggle";
+import { Toggle } from "../common/toggle/toggle";
 import { createEffect, createSignal } from "solid-js";
 
 export const DarkModeToggle = () => {

@@ -6,16 +6,21 @@ export const always = (...args: string[]): string => {
   return args.filter(Boolean).join(" ");
 };
 
-export const maybe = (enabled: boolean, ...className: string[]): string => {
+export const maybe = (
+  enabled: boolean | undefined,
+  ...className: string[]
+): string => {
   return enabled ? className.join(" ") : "";
 };
 
 export const toggle = (
-  className1: string,
-  className2: string,
   enabled: boolean,
+  className1: string | string[],
+  className2: string | string[],
 ): string => {
-  return enabled ? className1 : className2;
+  const one = Array.isArray(className1) ? className1.join(' ') : className1;
+  const two = Array.isArray(className2) ? className2.join(' ') : className2;
+  return enabled ? one : two;
 };
 
 export { css as c, always as a, maybe as m, toggle as t };
