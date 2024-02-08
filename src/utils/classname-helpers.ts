@@ -2,25 +2,21 @@ export const css = (...args: (string | undefined)[]): string => {
   return args.filter(Boolean).join(" ");
 };
 
-export const always = (...args: string[]): string => {
-  return args.filter(Boolean).join(" ");
-};
-
 export const maybe = (
-  enabled: boolean | undefined,
+  enabled: boolean | undefined | null,
   ...className: string[]
 ): string => {
   return enabled ? className.join(" ") : "";
 };
 
 export const toggle = (
-  enabled: boolean,
+  enabled: boolean | undefined | null,
   className1: string | string[],
   className2: string | string[],
 ): string => {
-  const one = Array.isArray(className1) ? className1.join(' ') : className1;
-  const two = Array.isArray(className2) ? className2.join(' ') : className2;
+  const one = Array.isArray(className1) ? className1.join(" ") : className1;
+  const two = Array.isArray(className2) ? className2.join(" ") : className2;
   return enabled ? one : two;
 };
 
-export { css as c, always as a, maybe as m, toggle as t };
+export { css as c, maybe as m, toggle as t };

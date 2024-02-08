@@ -1,10 +1,16 @@
+import plugin from "tailwindcss/plugin";
+
+function px(px) {
+  return `${px / 16}rem`;
+}
+
 /** @type {import("tailwindcss").Config} */
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: "class",
   theme: {
     fontFamily: {
-      sans: ["Noto Sans", "sans-serif"],
+      sans: ["Inter", "sans-serif"],
       mono: ["Victor Mono", "mono"],
     },
     colors: {
@@ -91,12 +97,41 @@ export default {
     },
     extend: {
       width: {
-        18: "4.5rem",
+        18: px(18 * 4),
+        112: px(112 * 4),
+        128: px(128 * 4),
       },
       borderWidth: {
-        12: ".75rem",
+        12: px(12),
+      },
+      borderRadius: {
+        "4xl": px(32),
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        ".form-size-sm": {
+          height: px(32),
+        },
+        ".form-size-md": {
+          height: px(40),
+        },
+        ".form-size-lg": {
+          height: px(48),
+        },
+        ".text-label": {
+          fontSize: px(14),
+        },
+        ".text-title": {},
+        ".text-lead": {},
+        // gradients
+        ".gradient-1": {
+          backgroundColor: "#F4D03F",
+          backgroundImage: "linear-gradient(132deg, #F4D03F 0%, #16A085 100%)",
+        },
+      });
+    }),
+  ],
 };

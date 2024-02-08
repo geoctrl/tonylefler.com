@@ -1,4 +1,4 @@
-import { Toggle } from "../common/toggle/toggle";
+import { Toggle } from "../../library/toggle/toggle";
 import { createEffect, createSignal } from "solid-js";
 
 export const DarkModeToggle = () => {
@@ -20,12 +20,9 @@ export const DarkModeToggle = () => {
   });
 
   return (
-    <div>
-      {mode()}
-      <Toggle
-        checked={mode() === "dark"}
-        onChange={(checked) => setMode(checked ? "dark" : "light")}
-      />
-    </div>
+    <Toggle
+      checked={mode() === "dark"}
+      onChange={(checked) => setMode(checked ? "dark" : "light")}
+    />
   );
 };
