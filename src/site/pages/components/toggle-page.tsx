@@ -1,5 +1,5 @@
 import { ParentProps, mergeProps, createSignal } from "solid-js";
-import { Toggle } from "../library/toggle/toggle";
+import { Toggle } from "../../../library/toggle/toggle";
 
 type Props = ParentProps<{}>;
 

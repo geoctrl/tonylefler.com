@@ -1,7 +1,7 @@
-import { Button } from "../library/button/button";
+import { Button } from "../../../library/button/button";
 import { A } from "@solidjs/router";
-import { DarkModeToggle } from "./components/dark-mode-toggle";
-import { Icon } from "../library/icon/icon";
+import { DarkModeToggle } from "../../components/dark-mode-toggle";
+import { Icon } from "../../../library/icon/icon";
 
 export const ButtonPage = () => {
   return (

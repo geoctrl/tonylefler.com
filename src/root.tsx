@@ -1,8 +1,10 @@
 import { Route, Router } from "@solidjs/router";
-import { Home } from "./site/pages/home/home";
-import { ButtonPage } from "./site/button-page";
-import { MusicApp } from "./site/pages/demo/music-app/music-app";
+import { Home } from "./site/pages/home";
+import { ButtonPage } from "./site/pages/components/button-page";
+import { MusicApp } from "./site/pages/demo/music-app";
 import { AvatarPage } from "./site/pages/components/avatar-page";
+import { ComponentsPage } from "./site/pages/components/components-page";
+import { DemoPage } from "./site/pages/demo/demo-page";
 
 export const Root = () => {
   return (
@@ -10,11 +12,17 @@ export const Root = () => {
       <Route path="/" component={Home} />
 
       {/*components*/}
-      <Route path="/components/button" component={ButtonPage} />
-      <Route path="/components/avatar" component={AvatarPage} />
+      <Route path="/components" component={ComponentsPage}>
+        <Route path="/" component={(props) => <div>components</div>} />
+        <Route path="/button" component={ButtonPage} />
+        <Route path="/avatar" component={AvatarPage} />
+      </Route>
 
       {/*demos*/}
-      <Route path="/demo/music-app" component={MusicApp} />
+      <Route path="/demos" component={DemoPage}>
+        <Route path="/" component={() => <div>demos</div>} />
+        <Route path="/music-app" component={MusicApp} />
+      </Route>
     </Router>
   );
 };

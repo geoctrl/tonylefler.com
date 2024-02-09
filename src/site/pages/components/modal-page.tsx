@@ -1,9 +1,9 @@
-import { Button } from "../library/button/button";
-import { Modal } from "../library/modal/modal";
+import { Button } from "../../../library/button/button";
+import { Modal } from "../../../library/modal/modal";
 import { createSignal } from "solid-js";
-import { ModalHeader } from "../library/modal/modal-header";
-import { ModalBody } from "../library/modal/modal-body";
-import { ModalFooter } from "../library/modal/modal-footer";
+import { ModalHeader } from "../../../library/modal/modal-header";
+import { ModalBody } from "../../../library/modal/modal-body";
+import { ModalFooter } from "../../../library/modal/modal-footer";
 
 export const ModalPage = () => {
   const [open, setOpen] = createSignal(false);

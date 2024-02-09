@@ -1,4 +1,4 @@
-import { Input } from "../library/input/input";
+import { Input } from "../../../library/input/input";
 
 export const InputPage = () => {
   return (
