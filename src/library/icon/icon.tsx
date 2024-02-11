@@ -16,7 +16,11 @@ export const Icon = (_props: IconProps) => {
     <svg
       {...rest}
       aria-hidden="true"
-      class={css("inline-block fill-current", props.class, props.class?.includes('size-') ? '' : 'size-5')}
+      class={css(
+        "inline-block shrink-0 fill-current",
+        props.class,
+        props.class?.includes("size-") ? "" : "size-5",
+      )}
     >
       <use href={`/__spritemap#sprite-${props.name}`} />
     </svg>

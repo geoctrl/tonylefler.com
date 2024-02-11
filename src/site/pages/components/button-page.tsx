@@ -1,17 +1,9 @@
 import { Button } from "../../../library/button/button";
-import { A } from "@solidjs/router";
-import { DarkModeToggle } from "../../components/dark-mode-toggle";
 import { Icon } from "../../../library/icon/icon";
 
 export const ButtonPage = () => {
   return (
-    <div class="p-16">
-      <DarkModeToggle />
-      <div>
-        hey
-        <A href="/">go home</A>
-      </div>
-
+    <div class="p-8">
       <h2>Buttons</h2>
       <p>This is a test</p>
       <div class="mb-4">
@@ -48,6 +40,7 @@ export const ButtonPage = () => {
           <Button variant="secondaryColor">Secondary Color</Button>
           <Button variant="border">Border</Button>
           <Button variant="tertiary">Tertiary</Button>
+          <Button variant="listItem">List Item</Button>
         </div>
       </div>
       <div class="mb-4">

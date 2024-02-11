@@ -5,6 +5,7 @@ import { MusicApp } from "./site/pages/demo/music-app";
 import { AvatarPage } from "./site/pages/components/avatar-page";
 import { ComponentsPage } from "./site/pages/components/components-page";
 import { DemoPage } from "./site/pages/demo/demo-page";
+import { InputPage } from "./site/pages/components/input-page";
 
 export const Root = () => {
   return (
@@ -12,15 +13,16 @@ export const Root = () => {
       <Route path="/" component={Home} />
 
       {/*components*/}
-      <Route path="/components" component={ComponentsPage}>
-        <Route path="/" component={(props) => <div>components</div>} />
+      <Route path="/components">
+        <Route path="/" component={ComponentsPage} />
         <Route path="/button" component={ButtonPage} />
         <Route path="/avatar" component={AvatarPage} />
+        <Route path="/input" component={InputPage} />
       </Route>
 
       {/*demos*/}
-      <Route path="/demos" component={DemoPage}>
-        <Route path="/" component={() => <div>demos</div>} />
+      <Route path="/demos">
+        <Route path="/" component={DemoPage} />
         <Route path="/music-app" component={MusicApp} />
       </Route>
     </Router>

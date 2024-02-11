@@ -44,7 +44,7 @@ export const Input = (_props: Props) => {
         {...inputProps}
         id={id}
         class={css(
-          "block w-full rounded-lg border-2 border-solid border-grey-500 align-middle",
+          "block w-full rounded-lg border border-solid border-grey-500 align-middle",
           "dark:border-grey-100/10 dark:bg-grey-100/5",
           maybe(localProps.size === "sm", "form-size-sm px-2 text-sm"),
           maybe(localProps.size === "md", "form-size-md px-3"),

@@ -15,7 +15,7 @@ export const AppHeader = (_props: Props) => {
   return (
     <div
       class={css(
-        "flex h-14 items-center justify-between bg-grey-200 px-4",
+        "flex h-16 items-center justify-between bg-grey-200 px-4",
         "dark:bg-raisin-600",
       )}
     >
@@ -24,13 +24,13 @@ export const AppHeader = (_props: Props) => {
         <div class="mr-4 inline-block size-8 overflow-hidden rounded-md">
           <img src={logo} class="content size-full object-cover" alt="Logo" />
         </div>
-        <div class="text-lg font-medium mr-16">App Title</div>
+        <div class="mr-16 text-lg font-medium">App Title</div>
 
-        <div class="hidden sm:flex gap-4">
-          <Button size="sm" variant="tertiary" as={A} href="/components">
+        <div class="hidden gap-4 sm:flex">
+          <Button variant="tertiary" as={A} href="/components">
             Components
           </Button>
-          <Button size="sm" variant="tertiary" as={A} href="/demos">
+          <Button variant="tertiary" as={A} href="/demos">
             Demos
           </Button>
         </div>

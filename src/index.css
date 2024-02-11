@@ -74,5 +74,7 @@
     @apply mb-2;
   }
 
+  .app-border {
+    @apply border-solid border-grey-500 dark:border-raisin-100;
+  }
 }
-

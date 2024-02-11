@@ -1,5 +1,6 @@
 import { ParentProps, mergeProps } from "solid-js";
 import { AppHeader } from "../components/app-header";
+import { MusicApp } from "./demo/music-app";
 
 type Props = ParentProps<{}>;
 

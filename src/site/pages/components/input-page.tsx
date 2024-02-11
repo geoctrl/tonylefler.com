@@ -2,7 +2,7 @@ import { Input } from "../../../library/input/input";
 
 export const InputPage = () => {
   return (
-    <div class="mb-8">
+    <div class="m-8">
       <h1>Input</h1>
       <h3>Size</h3>
       <div class="mb-4 flex items-center gap-2">

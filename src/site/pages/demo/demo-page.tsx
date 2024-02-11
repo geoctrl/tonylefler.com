@@ -10,6 +10,7 @@ export const DemoPage = (_props: Props) => {
   return (
     <>
       <AppHeader />
+      demo
       {props.children}
     </>
   );
