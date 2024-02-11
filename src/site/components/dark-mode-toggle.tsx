@@ -1,3 +1,6 @@
+import { Button } from "../../library";
+import { Menu } from "../../library/menu/menu";
+import { MenuButton } from "../../library/menu/menu-button";
 import { Toggle } from "../../library/toggle/toggle";
 import { createEffect, createSignal } from "solid-js";
 
@@ -20,9 +23,22 @@ export const DarkModeToggle = () => {
   });
 
   return (
-    <Toggle
-      checked={mode() === "dark"}
-      onChange={(checked) => setMode(checked ? "dark" : "light")}
-    />
+    <Menu
+      renderTrigger={(floatProps, { isOpen }) => {
+        return (
+          <Button
+            variant="tertiary"
+            {...floatProps}
+            active={isOpen()}
+            iconOnly="gear-regular"
+            style="margin-right: 600px"
+          />
+        );
+      }}
+    >
+      <MenuButton>View Profile</MenuButton>
+      <MenuButton>Settings</MenuButton>
+      <MenuButton>Company profile</MenuButton>
+    </Menu>
   );
 };

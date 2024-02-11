@@ -7,45 +7,61 @@ import {
   onCleanup,
   Show,
 } from "solid-js";
-import { Dynamic } from "solid-js/web";
+import { Dynamic, Portal } from "solid-js/web";
 import { computePosition, flip, offset, Placement } from "@floating-ui/dom";
 import anime from "animejs/lib/anime.es";
 import { css } from "../../utils/classname-helpers";
 
-type Props = {
+export type FloatContentOpts = { toggle: () => void };
+
+export type FloatProps = {
+  allowContentClicks?: boolean;
+  placement?: Placement;
+  onClose?: () => void;
+  onImperitiveHandle?: (
+    triggerEl: HTMLElement | undefined,
+    floatEl: HTMLElement | undefined,
+    opts: FloatContentOpts,
+  ) => void;
+  onKeyDown?: (e: KeyboardEvent) => void;
+  onOpen?: (contentRef: HTMLDivElement) => void;
+  onToggle?: (isOpen: boolean) => void;
+  renderContent: (opts: { isOpen: Accessor<boolean> }) => JSX.Element;
   renderTrigger: (
     floatProps: {
       ref: (el: HTMLElement) => void;
     },
     opts: { isOpen: Accessor<boolean> },
   ) => JSX.Element;
-  renderContent: (opts: { isOpen: Accessor<boolean> }) => JSX.Element;
-  placement?: Placement;
-  allowContentClicks?: boolean;
-  passRef?: (el: HTMLDivElement) => void;
-  onOpen?: (contentRef: HTMLDivElement) => void;
-  onClose?: () => void;
-  onKeyDown?: (e: KeyboardEvent) => void;
+  triggerHover?: boolean;
 };
-const defaultProps: Partial<Props> = {};
+const defaultProps: Partial<FloatProps> = {};
 
-export const Float = (_props: Props) => {
+export const Float = (_props: FloatProps) => {
+  const props = mergeProps(defaultProps, _props);
   let triggerRef: HTMLElement | undefined;
   let contentRef: HTMLElement | undefined;
   const [isOpen, setIsOpen] = createSignal(false);
   document.addEventListener("keydown", onKeyDown);
+  props.onImperitiveHandle?.(triggerRef, contentRef, { toggle });
 
   createEffect(() => {
     if (isOpen()) {
       props.onOpen?.(contentRef as HTMLDivElement);
+      props.onToggle?.(true);
     } else {
       props.onClose?.();
       triggerRef?.focus();
+      props.onToggle?.(false);
     }
   });
 
   onCleanup(() => {
-    triggerRef?.removeEventListener("click", toggle);
+    if (props.triggerHover) {
+      triggerRef?.removeEventListener("mouseenter", toggle);
+    } else {
+      triggerRef?.removeEventListener("click", toggle);
+    }
     document.removeEventListener("keydown", onKeyDown);
   });
 
@@ -54,7 +70,7 @@ export const Float = (_props: Props) => {
     return Math.round(value * dpr) / dpr;
   }
 
-  function toggle(e: MouseEvent) {
+  function toggle() {
     const nextIsOpen = !isOpen();
     setIsOpen(nextIsOpen);
 
@@ -65,20 +81,26 @@ export const Float = (_props: Props) => {
       const content = contentRef as HTMLElement;
       computePosition(trigger, content, {
         placement: props.placement || "bottom-start",
-        middleware: [flip(), offset(6)],
-      }).then(({ x, y }) => {
+        middleware: [
+          flip(),
+          offset({
+            mainAxis: props.triggerHover ? 12 : 7,
+            alignmentAxis: props.triggerHover ? -7 : 0,
+          }),
+        ],
+      }).then(({ x, y, ...rest }) => {
         anime({
           targets: contentRef,
           opacity: [0, 1],
           easing: "easeOutSine",
           scale: [0.8, 1],
           translateY: [-20, 0],
-          duration: 150,
-          top: [y, y],
-          left: [x, x],
+          duration: 100,
         });
 
         Object.assign(content.style, {
+          top: `${y}px`,
+          left: `${x}px`,
           transform: `translate(${roundByDPR(x)}px,${roundByDPR(y)}px)`,
         });
       });
@@ -107,15 +129,22 @@ export const Float = (_props: Props) => {
 
   function setTriggerRef(el: HTMLElement) {
     triggerRef = el;
-    triggerRef.addEventListener("click", toggle);
+    if (props.triggerHover) {
+      triggerRef.addEventListener("mouseover", toggle);
+    } else {
+      triggerRef.addEventListener("click", toggle);
+    }
+    props.onImperitiveHandle?.(triggerRef, contentRef as HTMLDivElement, {
+      toggle,
+    });
   }
 
   function setContentRef(el: HTMLElement) {
     contentRef = el;
-    if (props.passRef) props.passRef(el as HTMLDivElement);
+    props.onImperitiveHandle?.(triggerRef, contentRef as HTMLDivElement, {
+      toggle,
+    });
   }
-
-  const props = mergeProps(defaultProps, _props);
 
   return (
     <>
@@ -125,15 +154,17 @@ export const Float = (_props: Props) => {
         }
       />
       <Show when={isOpen()}>
-        <div
-          ref={(el) => setContentRef(el)}
-          class={css(
-            "app-border absolute left-0 top-0 w-max rounded-xl border bg-grey-100 shadow-lg",
-            "dark:bg-raisin-400",
-          )}
-        >
-          <Dynamic component={() => props.renderContent({ isOpen })} />
-        </div>
+        <Portal>
+          <div
+            ref={(el) => setContentRef(el)}
+            class={css(
+              "app-border absolute left-0 top-0 w-max rounded-xl border bg-grey-100 shadow-lg",
+              "dark:bg-raisin-400",
+            )}
+          >
+            <Dynamic component={() => props.renderContent({ isOpen })} />
+          </div>
+        </Portal>
       </Show>
     </>
   );

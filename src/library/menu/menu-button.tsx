@@ -1,5 +1,7 @@
-import { Show, splitProps } from "solid-js";
+import { Show, splitProps, JSX } from "solid-js";
 import { Button, ButtonProps } from "../button/button";
+import { Dynamic } from "solid-js/web";
+import { MenuSub } from "./menu-sub";
 
 export type MenuButtonProps = Omit<
   ButtonProps,
@@ -8,31 +10,40 @@ export type MenuButtonProps = Omit<
   shortcut?: string;
   iconLeft?: Icons;
   iconRight?: Icons;
+  subMenu?: JSX.Element;
+};
+
+const menuButtonRenderMap = {
+  button: Button,
+  child: MenuSub,
 };
 
 export const MenuButton = (props: MenuButtonProps) => {
-  const [, buttonProps] = splitProps(props, ["shortcut"]);
+  const [, buttonProps] = splitProps(props, [
+    "shortcut",
+    "children",
+    "subMenu",
+  ]);
+
   return (
-    <div class="px-1.5">
-      <Button
-        {...(buttonProps as ButtonProps)}
-        iconLeft={props.iconLeft}
-        iconRight={props.iconRight}
-        variant="listItem"
-        alignContent="left"
-        block
-        class="pl-3 pr-3"
-        role="menuitem"
-      >
-        <div class="flex w-full items-center justify-between gap-8">
-          {props.children}
-          <Show when={props.shortcut}>
-            <div class="text-sm font-normal text-grey-900">
-              {props.shortcut}
-            </div>
-          </Show>
-        </div>
-      </Button>
-    </div>
+    <Dynamic
+      component={menuButtonRenderMap[props.subMenu ? "child" : "button"]}
+      {...(buttonProps as ButtonProps)}
+      iconLeft={buttonProps.iconLeft}
+      iconRight={buttonProps.iconRight}
+      variant="listItem"
+      alignContent="left"
+      block
+      class="pl-3 pr-3"
+      role="menuitem"
+      subMenu={props.subMenu}
+    >
+      <div class="flex w-full items-center justify-between gap-8">
+        {props.children}
+        <Show when={props.shortcut}>
+          <div class="text-sm font-normal text-grey-900">{props.shortcut}</div>
+        </Show>
+      </div>
+    </Dynamic>
   );
 };

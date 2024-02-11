@@ -155,8 +155,8 @@ const buttonClasses = tv({
         "dark:text-grey-100 hover:dark:bg-grey-100/10 dark:active:bg-grey-100/15",
       ),
       listItem: css(
-        "hover:bg-raisin-500/10 focus:bg-raisin-500/15 active:bg-raisin-500/15",
-        "dark:text-grey-100 hover:dark:bg-grey-100/10 dark:focus:bg-grey-100/15 dark:active:bg-grey-100/15",
+        "focus:bg-raisin-500/15 active:bg-raisin-500/15 outline-none shadow-none",
+        "dark:text-grey-100 dark:focus:bg-grey-100/15 dark:active:bg-grey-100/15",
       ),
     },
     size: {
