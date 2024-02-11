@@ -89,19 +89,16 @@ export const Float = (_props: FloatProps) => {
           }),
         ],
       }).then(({ x, y, ...rest }) => {
+        const actualX = roundByDPR(x);
+        const actualY = roundByDPR(y);
         anime({
           targets: contentRef,
           opacity: [0, 1],
           easing: "easeOutSine",
           scale: [0.8, 1],
-          translateY: [-20, 0],
-          duration: 100,
-        });
-
-        Object.assign(content.style, {
-          top: `${y}px`,
-          left: `${x}px`,
-          transform: `translate(${roundByDPR(x)}px,${roundByDPR(y)}px)`,
+          translateX: [actualX, actualX],
+          translateY: [actualY, actualY],
+          duration: 10000,
         });
       });
     } else {
