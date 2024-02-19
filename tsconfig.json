@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "strict": true,
     "target": "ESNext",
     "module": "ESNext",
@@ -9,6 +10,10 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "types": ["vite/client"],
-    "noEmit": true
+    "noEmit": true,
+    "paths": {
+      "@stem/components": ["src/library/components"],
+      "@stem/build": ["src/library/build"],
+    }
   }
 }

@@ -1,0 +1,98 @@
+@use "color-use-cases";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  //[type='text']:focus,
+  //[type='email']:focus,
+  //[type='url']:focus,
+  //[type='password']:focus,
+  //[type='number']:focus,
+  //[type='date']:focus,
+  //[type='datetime-local']:focus,
+  //[type='month']:focus,
+  //[type='search']:focus,
+  //[type='tel']:focus,
+  //[type='time']:focus,
+  //[type='week']:focus,
+  //[multiple]:focus,
+  //textarea:focus,
+  //select:focus,
+  //.tl-toggle:focus-within {
+  //  --tw-ring-color: #93c5fd;
+  //  border-color: var(--tw-ring-color);
+  //}
+  //[type="checkbox"],
+  //[type="radio"] {
+  //  color: #3b82f6;
+  //}
+  //[type="checkbox"]:focus,
+  //[type="radio"]:focus {
+  //  --tw-ring-color: #93c5fd;
+  //}
+  //button:focus,
+  //a:focus {
+  //  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  //  border-color: #93c5fd;
+  //  outline: none;
+  //}
+
+  body {
+    @apply bg-grey-100 dark:bg-raisin-500 text-raisin-900 dark:text-grey-100;
+  }
+
+  h1 {
+    @apply text-4xl mb-2;
+  }
+
+  h2 {
+    @apply text-3xl mb-2;
+  }
+
+  h3 {
+    @apply text-xl mb-2;
+  }
+
+  h4 {
+    @apply text-lg mb-2;
+  }
+
+  h5 {
+    @apply text-base mb-2;
+  }
+
+  h6 {
+    @apply text-sm;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium;
+  }
+
+  code {
+    @apply bg-secondary-100/50 dark:bg-grey-100/20 rounded-md px-1 font-bold;
+  }
+
+  p {
+    @apply mb-2;
+  }
+
+  .app-border {
+    @apply border-solid border-grey-500 dark:border-raisin-100;
+  }
+
+  .table {
+    @apply border border-solid border-grey-500 dark:border-raisin-100 w-full rounded-md overflow-hidden;
+  }
+
+  .table table {
+    @apply border-collapse w-full;
+  }
+
+  .table table td, .table table th {
+    @apply text-left;
+  }
+}

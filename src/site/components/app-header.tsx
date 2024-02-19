@@ -3,7 +3,7 @@ import { ParentProps, mergeProps } from "solid-js";
 import logo from "../assets/logo.png";
 import { DarkModeToggle } from "./dark-mode-toggle";
 import { css } from "../../utils/classname-helpers";
-import { Button } from "../../library";
+import { Button } from "@stem/components";
 import { A } from "@solidjs/router";
 
 type Props = ParentProps<{}>;
@@ -21,10 +21,10 @@ export const AppHeader = (_props: Props) => {
     >
       {/*left*/}
       <div class="flex items-center">
-        <div class="mr-4 inline-block size-8 overflow-hidden rounded-md">
-          <img src={logo} class="content size-full object-cover" alt="Logo" />
-        </div>
-        <div class="mr-16 text-lg font-medium">App Title</div>
+        {/*<div class="mr-4 inline-block size-8 overflow-hidden rounded-md">*/}
+        {/*  <img src={logo} class="content size-full object-cover" alt="Logo" />*/}
+        {/*</div>*/}
+        <div class="mr-16 text-lg font-medium">component library</div>
 
         <div class="hidden gap-4 sm:flex">
           <Button variant="tertiary" as={A} href="/components">
@@ -38,9 +38,6 @@ export const AppHeader = (_props: Props) => {
 
       {/*right*/}
       <div class="flex items-center gap-4">
-        <Button variant="tertiary" size="sm" class="sm:hidden" dropdown>
-          Menu
-        </Button>
         <DarkModeToggle />
       </div>
     </div>

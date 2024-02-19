@@ -1,0 +1,10 @@
+@use "color-tools" as *;
+
+@layer base {
+  @include generateThemeVariables((
+    thing: (
+       light: #000000,
+       dark: #000000,
+    )
+  ))
+}

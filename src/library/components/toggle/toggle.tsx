@@ -1,5 +1,5 @@
 import { ParentProps, mergeProps, splitProps } from "solid-js";
-import { css, maybe, toggle } from "../../utils/classname-helpers";
+import { css, maybe, toggle } from "../../../utils/classname-helpers";
 
 type Props = ParentProps<{
   ref?: HTMLDivElement;
@@ -34,7 +34,6 @@ export const Toggle = (_props: Props) => {
         ref={toggleRef!}
         checked={props.checked}
         onChange={(e) => {
-          console.log("here");
           props.onChange(e.target.checked, e);
         }}
         type="checkbox"

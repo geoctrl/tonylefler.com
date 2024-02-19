@@ -1,9 +1,11 @@
-import { Button } from "../../../library/button/button";
-import { Modal } from "../../../library/modal/modal";
 import { createSignal } from "solid-js";
-import { ModalHeader } from "../../../library/modal/modal-header";
-import { ModalBody } from "../../../library/modal/modal-body";
-import { ModalFooter } from "../../../library/modal/modal-footer";
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from "@stem/components";
 
 export const ModalPage = () => {
   const [open, setOpen] = createSignal(false);
@@ -14,13 +16,9 @@ export const ModalPage = () => {
         <Button onClick={() => setOpen(true)}>Open Modal</Button>
       </div>
       <Modal show={open()} onClose={() => setOpen(false)}>
-        <ModalHeader>Modal Title</ModalHeader>
+        <ModalHeader title="Delete Collection" />
         <ModalBody>
-          Cheddar cheese and biscuits danish fontina. Caerphilly who moved my
-          cheese brie taleggio camembert de normandie camembert de normandie
-          cheese and wine red leicester. Pepper jack babybel st. agur blue
-          cheese airedale jarlsberg fromage who moved my cheese cream cheese.
-          The big cheese camembert de normandie cheese triangles.
+          Delete the "something" collection. This action is not recoverable.
         </ModalBody>
         <ModalFooter>
           <Button variant="tertiary">Cancel</Button>

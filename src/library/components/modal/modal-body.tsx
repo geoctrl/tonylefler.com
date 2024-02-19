@@ -6,5 +6,5 @@ const defaultProps: Partial<Props> = {};
 
 export const ModalBody = (_props: Props) => {
   const props = mergeProps(defaultProps, _props);
-  return <div class="p-4">{props.children}</div>;
+  return <div class="p-5">{props.children}</div>;
 };

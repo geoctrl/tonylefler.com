@@ -1,8 +1,7 @@
 import { ParentProps, mergeProps } from "solid-js";
 
-import { Button } from "../../../library";
+import { Button } from "@stem/components";
 import { DarkModeToggle } from "../../components/dark-mode-toggle";
-import { Icon } from "../../../library/icon/icon";
 
 type Props = ParentProps<{}>;
 

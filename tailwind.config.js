@@ -1,4 +1,5 @@
 import plugin from "tailwindcss/plugin";
+import {} from "tailwindcss/defaultTheme";
 
 function px(px) {
   return `${px / 16}rem`;
@@ -94,6 +95,16 @@ export default {
         800: "#D8C0AD",
         900: "#CDB19E",
       },
+    },
+    borderRadius: {
+      sm: px(6),
+      md: px(8),
+      lg: px(12),
+      xl: px(16),
+      "2xl": px(24),
+      "3xl": px(32),
+      "4xl": px(40),
+      full: px(9999),
     },
     extend: {
       width: {

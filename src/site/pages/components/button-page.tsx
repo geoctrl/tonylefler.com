@@ -1,51 +1,46 @@
-import { Button } from "../../../library/button/button";
-import { Icon } from "../../../library/icon/icon";
+import { Button, Icon } from "@stem/components";
 
 export const ButtonPage = () => {
   return (
-    <div class="p-8">
+    <div>
       <h2>Buttons</h2>
-      <p>This is a test</p>
-      <div class="mb-4">
-        <div>size</div>
-        <div class="flex items-center gap-2">
-          <Button
-            size="sm"
-            iconRight="caret-down-solid"
-            iconLeft="arrow-left-regular"
-          >
-            Medium
-          </Button>
-          <Button
-            size="md"
-            iconRight="caret-down-solid"
-            iconLeft="arrow-left-regular"
-          >
-            Medium
-          </Button>
-          <Button
-            size="lg"
-            iconRight="caret-down-solid"
-            iconLeft="arrow-left-regular"
-          >
-            Medium
-          </Button>
+      <div class="mb-8">
+        <h3>
+          <code>size</code>
+        </h3>
+        <p>
+          Default: <code>md</code>
+        </p>
+        <div class="flex flex-wrap items-center gap-2">
+          <Button size="sm">sm</Button>
+          <Button size="md">md</Button>
+          <Button size="lg">lg</Button>
         </div>
       </div>
-      <div class="mb-4">
-        <div>variants</div>
-        <div class="flex gap-2">
-          <Button variant="primary">Primary</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="secondaryColor">Secondary Color</Button>
-          <Button variant="border">Border</Button>
-          <Button variant="tertiary">Tertiary</Button>
-          <Button variant="listItem">List Item</Button>
+      <div class="mb-8">
+        <h3>
+          <code>variant</code>
+        </h3>
+        <p>
+          Default: <code>secondary</code>
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <Button variant="primary">primary</Button>
+          <Button variant="secondary">secondary</Button>
+          <Button variant="secondaryColor">secondaryColor</Button>
+          <Button variant="border">border</Button>
+          <Button variant="tertiary">tertiary</Button>
+          <Button variant="listItem">listItem</Button>
         </div>
       </div>
-      <div class="mb-4">
-        <div>active</div>
-        <div class="flex gap-2">
+      <div class="mb-8">
+        <h3>
+          <code>active</code>
+        </h3>
+        <p>
+          Default: <code>false</code>
+        </p>
+        <div class="flex flex-wrap gap-2">
           <Button variant="primary" active>
             Primary
           </Button>
@@ -64,7 +59,9 @@ export const ButtonPage = () => {
         </div>
       </div>
       <div class="mb-4">
-        <h3>icons</h3>
+        <h3>
+          <code>iconLeft</code>
+        </h3>
         <p>pass icon names</p>
         <div class="mb-2 flex items-center gap-2">
           <Button iconLeft="arrow-left-regular">iconLeft</Button>

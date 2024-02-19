@@ -8,22 +8,27 @@ import {
 } from "solid-js";
 import { Portal } from "solid-js/web";
 import anime from "animejs/lib/anime.es";
-import { animeOnComplete, getTransformMatrix } from "../../utils/anime-utils";
+import {
+  animeOnComplete,
+  getTransformMatrix,
+} from "../../../utils/anime-utils";
 import { ModalContext } from "./modal-context";
-import { css } from "../../utils/classname-helpers";
+import { css } from "../../../utils/classname-helpers";
 
 const animateOpts = {
   easing: "easeOutSine",
-  duration: 400,
+  duration: 250,
 };
 
 type Props = ParentProps<{
   show?: boolean;
   onClose?: () => void;
+  allowBackdropClose?: boolean;
 }>;
 
 const defaultProps: Partial<Props> = {
   show: false,
+  allowBackdropClose: true,
 };
 
 export const Modal = (_props: Props) => {
@@ -89,7 +94,11 @@ export const Modal = (_props: Props) => {
             <div
               ref={backdropRef}
               class="absolute inset-0 z-0 bg-raisin-500/50 opacity-0"
-              onClick={() => props.onClose?.()}
+              onClick={() => {
+                if (props.allowBackdropClose) {
+                  props.onClose?.();
+                }
+              }}
             />
             <div
               ref={cardRef}

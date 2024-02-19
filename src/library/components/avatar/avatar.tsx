@@ -1,7 +1,7 @@
 import { ParentProps, mergeProps, JSX } from "solid-js";
 import { twMerge } from "tailwind-merge";
 
-import { css, maybe } from "../../utils/classname-helpers";
+import { css, maybe } from "../../../utils/classname-helpers";
 
 type Props = Pick<JSX.HTMLAttributes<HTMLDivElement>, "class" | "classList"> &
   ParentProps<{ src?: string; size?: "xs" | "sm" | "md" | "lg" }>;

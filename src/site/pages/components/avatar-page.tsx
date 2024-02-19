@@ -1,5 +1,5 @@
 import { ParentProps, mergeProps } from "solid-js";
-import { Avatar } from "../../../library/avatar/avatar";
+import { Avatar } from "@stem/components";
 import profile from "../../assets/profile-2.png";
 
 type Props = ParentProps<{}>;

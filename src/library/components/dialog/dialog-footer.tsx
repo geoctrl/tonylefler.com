@@ -4,7 +4,9 @@ type Props = ParentProps<{}>;
 
 const defaultProps: Partial<Props> = {};
 
-export const List = (_props: Props) => {
+export const DialogFooter = (_props: Props) => {
   const props = mergeProps(defaultProps, _props);
-  return <div class="py-1.5 flex flex-col">{props.children}</div>;
+  return (
+    <div class="flex items-center justify-end gap-3 p-4">{props.children}</div>
+  );
 };

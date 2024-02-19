@@ -1,6 +1,6 @@
 import { ParentProps, mergeProps, splitProps } from "solid-js";
 import type { JSX } from "solid-js";
-import { css } from "../../utils/classname-helpers";
+import { css } from "../../../utils/classname-helpers";
 
 export type IconProps = ParentProps<{
   name?: Icons;

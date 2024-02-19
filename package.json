@@ -10,6 +10,7 @@
     "build-icons": "node icons-build-type-definitions"
   },
   "devDependencies": {
+    "@rollup/plugin-alias": "^5.1.0",
     "@spiriit/vite-plugin-svg-spritemap": "^2.2.4",
     "@types/animejs": "^3",
     "@types/node": "^20.11.16",
@@ -17,6 +18,7 @@
     "postcss": "^8.4.33",
     "prettier": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.11",
+    "sass": "^1.70.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3",
     "vite": "^5.0.12",

@@ -1,6 +1,6 @@
 import { ParentProps, mergeProps, splitProps } from "solid-js";
 import type { JSX } from "solid-js";
-import { css, maybe } from "../../utils/classname-helpers";
+import { css, maybe } from "../../../utils/classname-helpers";
 import { Label } from "../label/label";
 import { ulid } from "ulid";
 
@@ -44,11 +44,17 @@ export const Input = (_props: Props) => {
         {...inputProps}
         id={id}
         class={css(
-          "block w-full rounded-lg border border-solid border-grey-500 align-middle",
+          "block w-full border border-solid border-grey-500 align-middle",
           "dark:border-grey-100/10 dark:bg-grey-100/5",
-          maybe(localProps.size === "sm", "form-size-sm px-2 text-sm"),
-          maybe(localProps.size === "md", "form-size-md px-3"),
-          maybe(localProps.size === "lg", "form-size-lg px-4 text-lg"),
+          maybe(
+            localProps.size === "sm",
+            "rounded-md px-2 text-sm form-size-sm",
+          ),
+          maybe(localProps.size === "md", "rounded-lg px-3 form-size-md"),
+          maybe(
+            localProps.size === "lg",
+            "rounded-lg px-4 text-lg form-size-lg",
+          ),
         )}
         onInput={(e) => localProps.onInput?.(e.target.value, e)}
       />

@@ -1,5 +1,5 @@
 import { ParentProps, mergeProps, createSignal, createEffect } from "solid-js";
-import { Float, FloatContentOpts, FloatProps } from "../float/float";
+import { Float, FloatContentOpts, FloatProps } from "@stem/build";
 
 export type MenuProps = ParentProps<
   Pick<FloatProps, "renderTrigger" | "placement" | "triggerHover">
@@ -28,7 +28,6 @@ export const Menu = (_props: MenuProps) => {
         e.stopPropagation();
         increment();
       } else if (document.activeElement === triggerRef) {
-        console.log("selected");
         e.preventDefault();
         e.stopPropagation();
         setSelectedIndex(null);
@@ -71,6 +70,7 @@ export const Menu = (_props: MenuProps) => {
     const index = items().findIndex((el) => el === item);
     if (index === -1) return;
     item.focus();
+    setSelectedIndex(index);
   }
 
   function handleMouseLeave(e: MouseEvent) {
@@ -102,7 +102,7 @@ export const Menu = (_props: MenuProps) => {
     <Float
       {...props}
       allowContentClicks
-      onImperitiveHandle={(triggerEl, floatEl, opts) => {
+      onImperativeHandle={(triggerEl, floatEl, opts) => {
         triggerRef = triggerEl;
         floatRef = floatEl;
         floatOpts = opts;

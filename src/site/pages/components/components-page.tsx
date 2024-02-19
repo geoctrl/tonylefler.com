@@ -1,13 +1,7 @@
-import { ParentProps, mergeProps, onMount } from "solid-js";
+import { ParentProps, mergeProps } from "solid-js";
 import { AppHeader } from "../../components/app-header";
-import { Float } from "../../../library/float/float";
-import { Button } from "../../../library";
-import { List } from "../../../library/list/list";
-import { ListButton } from "../../../library/list/list-button";
-import { ListDivider } from "../../../library/list/list-divider";
-import { Menu } from "../../../library/menu/menu";
-import { MenuButton } from "../../../library/menu/menu-button";
-import { MenuDivider } from "../../../library/menu/menu-divider";
+import { Button } from "@stem/components";
+import { A } from "@solidjs/router";
 
 type Props = ParentProps<{}>;
 
@@ -18,28 +12,66 @@ export const ComponentsPage = (_props: Props) => {
   return (
     <>
       <AppHeader />
-      {props.children}
-
-      <div class="p-10">
-        <Menu
-          renderTrigger={(floatProps, { isOpen }) => {
-            return (
-              <Button
-                variant="tertiary"
-                {...floatProps}
-                active={isOpen()}
-                iconOnly="gear-regular"
-              />
-            );
-          }}
-        >
-          <MenuButton shortcut="⌘K->P">View Profile</MenuButton>
-          <MenuButton shortcut="⌘S">Settings</MenuButton>
-          <MenuButton shortcut="⌘K->C">Company profile</MenuButton>
-          <MenuButton shortcut="⌘K->T">Team</MenuButton>
-          <MenuDivider />
-          <MenuButton shortcut="⌘I">Invite colleagues</MenuButton>
-        </Menu>
+      <div class="p-8">
+        <div class="flex gap-4">
+          <div class="w-40 shrink-0">
+            <Button
+              block
+              alignContent="left"
+              variant="tertiary"
+              as={A}
+              href="/components/button"
+            >
+              Button
+            </Button>
+            <Button
+              block
+              alignContent="left"
+              variant="tertiary"
+              as={A}
+              href="/components/avatar"
+            >
+              Avatar
+            </Button>
+            <Button
+              block
+              alignContent="left"
+              variant="tertiary"
+              as={A}
+              href="/components/input"
+            >
+              Input
+            </Button>
+            <Button
+              block
+              alignContent="left"
+              variant="tertiary"
+              as={A}
+              href="/components/modal"
+            >
+              Modal
+            </Button>
+            <Button
+              block
+              alignContent="left"
+              variant="tertiary"
+              as={A}
+              href="/components/toggle"
+            >
+              Toggle
+            </Button>
+            <Button
+              block
+              alignContent="left"
+              variant="tertiary"
+              as={A}
+              href="/components/dialog"
+            >
+              Dialog
+            </Button>
+          </div>
+          <div class="shrink">{props.children}</div>
+        </div>
       </div>
     </>
   );

@@ -1,12 +1,11 @@
-import { mergeProps, ParentProps, Show, splitProps } from "solid-js";
-import type { JSX } from "solid-js";
+import { mergeProps, ParentProps, Show, splitProps, JSX } from "solid-js";
 import { A, AnchorProps } from "@solidjs/router";
 import { Dynamic } from "solid-js/web";
 import { tv } from "tailwind-variants";
 
 import { Icon, IconProps } from "../icon/icon";
-import { inlineSwitch } from "../../utils/inline-switch";
-import { css } from "../../utils/classname-helpers";
+import { inlineSwitch } from "../../../utils/inline-switch";
+import { css } from "../../../utils/classname-helpers";
 
 type ButtonBaseProps = ParentProps<{
   active?: boolean;
