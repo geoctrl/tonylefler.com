@@ -1,10 +1,13 @@
 import { ParentProps, mergeProps } from "solid-js";
-import { Float, FloatProps } from "@stem/build";
+import {
+  Float,
+  FloatProps,
+  Button,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
+} from "@stem/components";
 import { inlineSwitch } from "../../../utils/inline-switch";
-import { Button } from "../button/button";
-import { DialogHeader } from "./dialog-header";
-import { DialogBody } from "./dialog-body";
-import { DialogFooter } from "./dialog-footer";
 
 type Props = ParentProps<{
   size?: "sm" | "md" | "lg" | number;
@@ -19,14 +22,17 @@ export const Dialog = (_props: Props) => {
   const props = mergeProps(defaultProps, _props);
 
   const numberSize =
-    (typeof props.size === "number"
+    typeof props.size === "number"
       ? props.size
-      : inlineSwitch(props.size!, {
-          sm: 360,
-          md: 460,
-          lg: 600,
-        })) || 200;
-
+      : inlineSwitch(
+          props.size!,
+          {
+            sm: 360,
+            md: 460,
+            lg: 600,
+          },
+          "md",
+        );
   return (
     <Float
       coverTrigger
@@ -35,7 +41,7 @@ export const Dialog = (_props: Props) => {
       backdrop
       renderContent={() => (
         <div
-          style={{ width: `${numberSize / 16}rem` }}
+          style={{ width: `${numberSize / 10}rem` }}
           tabIndex={0}
           onLoad={(e) => {
             const target = e.target as HTMLElement;

@@ -20,15 +20,6 @@ export const ComponentsPage = (_props: Props) => {
               alignContent="left"
               variant="tertiary"
               as={A}
-              href="/components/button"
-            >
-              Button
-            </Button>
-            <Button
-              block
-              alignContent="left"
-              variant="tertiary"
-              as={A}
               href="/components/avatar"
             >
               Avatar
@@ -38,9 +29,54 @@ export const ComponentsPage = (_props: Props) => {
               alignContent="left"
               variant="tertiary"
               as={A}
+              href="/components/button"
+            >
+              Button
+            </Button>
+            <Button
+              block
+              alignContent="left"
+              variant="tertiary"
+              as={A}
+              href="/components/dialog"
+            >
+              Dialog
+            </Button>
+            <Button
+              block
+              alignContent="left"
+              variant="tertiary"
+              as={A}
+              href="/components/float"
+            >
+              Float
+            </Button>
+            <Button
+              block
+              alignContent="left"
+              variant="tertiary"
+              as={A}
+              href="/components/icon"
+            >
+              Icon
+            </Button>
+            <Button
+              block
+              alignContent="left"
+              variant="tertiary"
+              as={A}
               href="/components/input"
             >
               Input
+            </Button>
+            <Button
+              block
+              alignContent="left"
+              variant="tertiary"
+              as={A}
+              href="/components/menu"
+            >
+              Menu
             </Button>
             <Button
               block
@@ -59,15 +95,6 @@ export const ComponentsPage = (_props: Props) => {
               href="/components/toggle"
             >
               Toggle
-            </Button>
-            <Button
-              block
-              alignContent="left"
-              variant="tertiary"
-              as={A}
-              href="/components/dialog"
-            >
-              Dialog
             </Button>
           </div>
           <div class="shrink">{props.children}</div>

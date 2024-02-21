@@ -1,5 +1,7 @@
+import { twMerge } from "tailwind-merge";
+
 export const css = (...args: (string | undefined)[]): string => {
-  return args.filter(Boolean).join(" ");
+  return twMerge(args.filter(Boolean).join(" "));
 };
 
 export const maybe = (

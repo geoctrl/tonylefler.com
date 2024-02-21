@@ -82,6 +82,7 @@ export const Button = (_props: ButtonProps) => {
     <Dynamic
       component={Wrapper as any}
       {...buttonProps}
+      draggable={buttonProps.draggable || false}
       class={buttonClasses({
         variant: props.variant,
         size: props.size,
@@ -140,21 +141,21 @@ const buttonClasses = tv({
       primary:
         "bg-primary-500 text-grey-100 hover:bg-primary-600 active:bg-primary-700",
       secondary: css(
-        "bg-raisin-500/10 hover:bg-raisin-500/20 active:bg-raisin-500/25",
+        "text-raisin-900 dark:text-grey-100 bg-raisin-500/10 hover:bg-raisin-500/20 active:bg-raisin-500/25",
         "dark:bg-grey-500/10 dark:text-grey-100 hover:dark:bg-grey-500/20 active:dark:bg-grey-500/25",
       ),
       secondaryColor:
         "bg-primary-500/10 text-primary-500 hover:bg-primary-500/20 active:bg-primary-500/25",
       border: css(
-        "border border-solid border-grey-900/30 text-raisin-500 hover:border-grey-900/40 hover:bg-raisin-500/10 active:border-grey-900/50 active:bg-raisin-500/15",
+        "text-raisin-900 dark:text-grey-100 border border-solid border-grey-900/30 text-raisin-500 hover:border-grey-900/40 hover:bg-raisin-500/10 active:border-grey-900/50 active:bg-raisin-500/15",
         "dark:border-grey-100/50 dark:text-grey-100 dark:hover:bg-grey-500/10 dark:active:bg-grey-100/15",
       ),
       tertiary: css(
-        "hover:bg-raisin-500/10 active:bg-raisin-500/15",
+        "text-raisin-900 dark:text-grey-100 hover:bg-raisin-500/10 active:bg-raisin-500/15",
         "dark:text-grey-100 hover:dark:bg-grey-100/10 dark:active:bg-grey-100/15",
       ),
       listItem: css(
-        "focus:bg-raisin-500/15 active:bg-raisin-500/15 outline-none shadow-none",
+        "text-raisin-900 dark:text-grey-100 focus:bg-raisin-500/15 active:bg-raisin-500/15 outline-none shadow-none",
         "dark:text-grey-100 dark:focus:bg-grey-100/15 dark:active:bg-grey-100/15",
       ),
     },

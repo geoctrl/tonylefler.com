@@ -9,6 +9,9 @@ import { InputPage } from "./site/pages/components/input-page";
 import { ModalPage } from "./site/pages/components/modal-page";
 import { TogglePage } from "./site/pages/components/toggle-page";
 import { DialogPage } from "./site/pages/components/dialog-page";
+import { FloatPage } from "./site/pages/components/float-page";
+import { IconPage } from "./site/pages/components/icon-page";
+import { MenuPage } from "./site/pages/components/menu-page";
 
 export const Root = () => {
   return (
@@ -18,12 +21,15 @@ export const Root = () => {
       {/*components*/}
       <Route path="/components" component={ComponentsPage}>
         <Route path="/" />
-        <Route path="/button" component={ButtonPage} />
         <Route path="/avatar" component={AvatarPage} />
+        <Route path="/button" component={ButtonPage} />
+        <Route path="/dialog" component={DialogPage} />
+        <Route path="/float" component={FloatPage} />
+        <Route path="/icon" component={IconPage} />
         <Route path="/input" component={InputPage} />
+        <Route path="/menu" component={MenuPage} />
         <Route path="/modal" component={ModalPage} />
         <Route path="/toggle" component={TogglePage} />
-        <Route path="/dialog" component={DialogPage} />
       </Route>
 
       {/*demos*/}

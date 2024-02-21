@@ -1,8 +1,14 @@
+@use "colors" as *;
 @use "color-use-cases";
+@use "typography" as *;
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  @include colors;
+}
 
 @layer base {
 
@@ -41,58 +47,34 @@
   //}
 
   body {
+    font-size: 1.4rem;
     @apply bg-grey-100 dark:bg-raisin-500 text-raisin-900 dark:text-grey-100;
   }
 
-  h1 {
-    @apply text-4xl mb-2;
-  }
-
-  h2 {
-    @apply text-3xl mb-2;
-  }
-
-  h3 {
-    @apply text-xl mb-2;
-  }
-
-  h4 {
-    @apply text-lg mb-2;
-  }
-
-  h5 {
-    @apply text-base mb-2;
-  }
-
-  h6 {
-    @apply text-sm;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-medium;
-  }
-
-  code {
-    @apply bg-secondary-100/50 dark:bg-grey-100/20 rounded-md px-1 font-bold;
-  }
-
-  p {
-    @apply mb-2;
-  }
-
-  .app-border {
-    @apply border-solid border-grey-500 dark:border-raisin-100;
-  }
+  @include typography;
 
   .table {
-    @apply border border-solid border-grey-500 dark:border-raisin-100 w-full rounded-md overflow-hidden;
+    @apply text-sm border border-solid border-grey-500 dark:border-raisin-100 w-full rounded-md overflow-hidden;
   }
 
   .table table {
     @apply border-collapse w-full;
   }
 
-  .table table td, .table table th {
-    @apply text-left;
+  .table table tr {
+
+    > th, > td {
+      border-bottom: solid 1px var(--app-border);
+      @apply text-left p-2;
+    }
+
+    tbody > tr:last-child td {
+      border: none;
+    }
   }
+}
+
+@mixin app-border {
+  border-width: .1rem;
+  border-color: var(--app-border);
 }

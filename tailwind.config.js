@@ -1,5 +1,5 @@
 import plugin from "tailwindcss/plugin";
-import {} from "tailwindcss/defaultTheme";
+import tailwindBaseFontSize from "tailwindcss-base-font-size";
 
 function px(px) {
   return `${px / 16}rem`;
@@ -13,6 +13,11 @@ export default {
     fontFamily: {
       sans: ["Inter", "sans-serif"],
       mono: ["Victor Mono", "mono"],
+    },
+    fontSize: {
+      sm: "1.2rem",
+      base: "1.4rem",
+      lg: "1.6rem",
     },
     colors: {
       current: "currentColor",
@@ -97,43 +102,44 @@ export default {
       },
     },
     borderRadius: {
-      sm: px(6),
-      md: px(8),
-      lg: px(12),
-      xl: px(16),
-      "2xl": px(24),
-      "3xl": px(32),
-      "4xl": px(40),
-      full: px(9999),
+      sm: "6rem",
+      md: ".8rem",
+      lg: "1.2rem",
+      xl: "1.6rem",
+      "2xl": "2.4rem",
+      "3xl": "3.2rem",
+      "4xl": "4rem",
+      full: "99999px",
     },
     extend: {
       width: {
-        18: px(18 * 4),
-        112: px(112 * 4),
-        128: px(128 * 4),
+        18: `${(18 * 4) / 10}rem`,
+        112: `${(112 * 4) / 10}rem`,
+        128: `${(128 * 4) / 10}rem`,
       },
       borderWidth: {
-        12: px(12),
+        12: "1.2rem",
       },
       borderRadius: {
-        "4xl": px(32),
+        "4xl": "3.2rem",
       },
     },
   },
   plugins: [
+    tailwindBaseFontSize({ baseFontSize: 10 }),
     plugin(function ({ addUtilities }) {
       addUtilities({
+        ".app-border": {
+          border: `solid .1rem var(--app-border)`,
+        },
         ".form-size-sm": {
-          height: px(32),
+          height: "3.2rem",
         },
         ".form-size-md": {
-          height: px(40),
+          height: "4rem",
         },
         ".form-size-lg": {
-          height: px(48),
-        },
-        ".text-label": {
-          fontSize: px(14),
+          height: "4.8rem",
         },
         ".text-title": {},
         ".text-lead": {},

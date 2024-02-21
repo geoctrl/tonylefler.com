@@ -3,7 +3,6 @@ import solidPlugin from "vite-plugin-solid";
 import VitePluginSvgSpritemap from "@spiriit/vite-plugin-svg-spritemap";
 import path from "path";
 import url from "url";
-import alias from "@rollup/plugin-alias";
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
@@ -27,26 +26,6 @@ export default defineConfig(({ mode }) => {
           fileName: "stem-ui",
           entry: path.resolve(__dirname, "./src/library/index.ts"),
         },
-        rollupOptions: {
-          external: ["solid-js"],
-          plugins: [
-            // alias({
-            //   entries: [
-            //     {
-            //       find: "@stem/*",
-            //       replacement: path.resolve(
-            //         __dirname,
-            //         "src/library/*",
-            //       ),
-            //     },
-            //     {
-            //       find: "@stem/build",
-            //       replacement: path.resolve(__dirname, "src/library/build"),
-            //     },
-            //   ],
-            // }),
-          ],
-        },
       },
     };
   }
@@ -61,6 +40,9 @@ export default defineConfig(({ mode }) => {
       build: {
         outDir: "dist-app",
         target: "esnext",
+        rollupOptions: {
+          external: ["solid-js"],
+        },
       },
     };
   }

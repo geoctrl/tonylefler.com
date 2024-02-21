@@ -11,9 +11,14 @@
     "jsxImportSource": "solid-js",
     "types": ["vite/client"],
     "noEmit": true,
+    "include": [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.mdx"
+    ],
     "paths": {
       "@stem/components": ["src/library/components"],
-      "@stem/build": ["src/library/build"],
+      "@stem/build": ["src/library/build"]
     }
   }
 }

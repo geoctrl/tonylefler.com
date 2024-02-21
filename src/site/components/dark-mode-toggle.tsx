@@ -1,5 +1,5 @@
 import { createEffect, createSignal } from "solid-js";
-import { Menu, Button, MenuButton } from "../../library/components";
+import { Menu, Button, MenuButton } from "@stem/components";
 import { inlineSwitch } from "../../utils/inline-switch";
 
 export const DarkModeToggle = () => {
@@ -13,8 +13,10 @@ export const DarkModeToggle = () => {
       if (mode() === "default") {
         if (matches) {
           document.documentElement.classList.add("dark");
+          document.documentElement.classList.remove("light");
         } else {
           document.documentElement.classList.remove("dark");
+          document.documentElement.classList.add("light");
         }
       }
     });
@@ -27,8 +29,10 @@ export const DarkModeToggle = () => {
         window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
       document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
     } else {
       document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
     }
   });
 

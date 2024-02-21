@@ -1,5 +1,5 @@
 import { ParentProps, mergeProps, createSignal, createEffect } from "solid-js";
-import { Float, FloatContentOpts, FloatProps } from "@stem/build";
+import { Float, FloatContentOpts, FloatProps } from "@stem/components";
 
 export type MenuProps = ParentProps<
   Pick<FloatProps, "renderTrigger" | "placement" | "triggerHover">

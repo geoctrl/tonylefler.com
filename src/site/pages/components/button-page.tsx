@@ -3,7 +3,7 @@ import { Button, Icon } from "@stem/components";
 export const ButtonPage = () => {
   return (
     <div>
-      <h2>Buttons</h2>
+      <h1>Button</h1>
       <div class="mb-8">
         <h3>
           <code>size</code>

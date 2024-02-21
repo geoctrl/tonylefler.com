@@ -1,10 +1,8 @@
 @use "color-tools" as *;
 
-@layer base {
-  @include generateThemeVariables((
-    thing: (
-       light: #000000,
-       dark: #000000,
-    )
-  ))
-}
+@include generateThemeVariables((
+  app-border: (
+    light: var(--grey-500),
+    dark: var(--raisin-100),
+  )
+))

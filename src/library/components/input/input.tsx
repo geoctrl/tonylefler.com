@@ -1,8 +1,8 @@
-import { ParentProps, mergeProps, splitProps } from "solid-js";
+import { ParentProps, mergeProps, splitProps, Show } from "solid-js";
 import type { JSX } from "solid-js";
-import { css, maybe } from "../../../utils/classname-helpers";
-import { Label } from "../label/label";
+import { css } from "../../../utils/classname-helpers";
 import { ulid } from "ulid";
+import { tv } from "tailwind-variants";
 
 type Props = JSX.InputHTMLAttributes<HTMLInputElement> &
   ParentProps<{
@@ -35,27 +35,30 @@ export const Input = (_props: Props) => {
   const id = props.id || ulid();
   return (
     <div
-      class={css(localProps.class, "align-middle")}
+      class={css("align-middle", localProps.class)}
       classList={localProps.classList}
       style={localProps.style}
     >
-      <Label for={id}>{props.label}</Label>
+      <Show when={!!props.label}>
+        <label class="text-label" for={id}>
+          {props.label}
+        </label>
+      </Show>
       <input
         {...inputProps}
         id={id}
-        class={css(
-          "block w-full border border-solid border-grey-500 align-middle",
-          "dark:border-grey-100/10 dark:bg-grey-100/5",
-          maybe(
-            localProps.size === "sm",
-            "rounded-md px-2 text-sm form-size-sm",
-          ),
-          maybe(localProps.size === "md", "rounded-lg px-3 form-size-md"),
-          maybe(
-            localProps.size === "lg",
-            "rounded-lg px-4 text-lg form-size-lg",
-          ),
-        )}
+        class={tv({
+          base: "block w-full border border-solid border-grey-500 align-middle text-base dark:border-grey-100/10 dark:bg-grey-100/5",
+          variants: {
+            size: {
+              sm: "rounded-md px-2 text-sm form-size-sm",
+              md: "rounded-lg px-3 form-size-md",
+              lg: "rounded-lg px-4 text-lg form-size-lg",
+            },
+          },
+        })({
+          size: props.size || "md",
+        })}
         onInput={(e) => localProps.onInput?.(e.target.value, e)}
       />
     </div>
