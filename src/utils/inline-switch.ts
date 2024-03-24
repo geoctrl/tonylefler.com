@@ -1,3 +1,4 @@
+// overload signatures
 export function inlineSwitch<
   Expression extends string | number | symbol,
   Value,
@@ -16,6 +17,7 @@ export function inlineSwitch<
   fallback: Expression,
 ): Value;
 
+// inlineSwitch
 export function inlineSwitch<
   Expression extends string | number | symbol,
   Value,

@@ -2,8 +2,8 @@ import { ParentProps, mergeProps } from "solid-js";
 
 import logo from "../assets/logo.png";
 import { DarkModeToggle } from "./dark-mode-toggle";
-import { css } from "../../utils/classname-helpers";
-import { Button } from "@stem/components";
+import { always } from "../../utils/classname-helpers";
+import { Button, Menu, MenuButton } from "@stem/components";
 import { A } from "@solidjs/router";
 
 type Props = ParentProps<{}>;
@@ -14,7 +14,7 @@ export const AppHeader = (_props: Props) => {
   const props = mergeProps(defaultProps, _props);
   return (
     <div
-      class={css(
+      class={always(
         "flex h-16 items-center justify-between bg-grey-200 px-4",
         "dark:bg-raisin-600",
       )}
@@ -30,9 +30,17 @@ export const AppHeader = (_props: Props) => {
           <Button variant="tertiary" as={A} href="/components">
             Components
           </Button>
-          <Button variant="tertiary" as={A} href="/demos">
-            Demos
-          </Button>
+          <Menu
+            renderTrigger={(floatProps, { isOpen }) => (
+              <Button variant="tertiary" active={isOpen()} {...floatProps}>
+                Demos
+              </Button>
+            )}
+          >
+            <MenuButton as={A} href="/demos/music-app">
+              Music App
+            </MenuButton>
+          </Menu>
         </div>
       </div>
 

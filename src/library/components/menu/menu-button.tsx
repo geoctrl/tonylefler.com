@@ -3,7 +3,7 @@ import { Button, ButtonProps } from "../button/button";
 import { Dynamic } from "solid-js/web";
 import { MenuSub } from "./menu-sub";
 
-export type MenuButtonProps = Omit<
+export type MenuButtonProps = ConditionalOmit<
   ButtonProps,
   "iconLeft" | "iconRight" | "iconOnly"
 > & {

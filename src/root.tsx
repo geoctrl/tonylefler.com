@@ -12,6 +12,7 @@ import { DialogPage } from "./site/pages/components/dialog-page";
 import { FloatPage } from "./site/pages/components/float-page";
 import { IconPage } from "./site/pages/components/icon-page";
 import { MenuPage } from "./site/pages/components/menu-page";
+import { RangeSliderPage } from "./site/pages/components/range-slider-page";
 
 export const Root = () => {
   return (
@@ -29,6 +30,7 @@ export const Root = () => {
         <Route path="/input" component={InputPage} />
         <Route path="/menu" component={MenuPage} />
         <Route path="/modal" component={ModalPage} />
+        <Route path="/range-slider" component={RangeSliderPage} />
         <Route path="/toggle" component={TogglePage} />
       </Route>
 

@@ -13,7 +13,7 @@ import {
   getTransformMatrix,
 } from "../../../utils/anime-utils";
 import { ModalContext } from "./modal-context";
-import { css } from "../../../utils/classname-helpers";
+import { always } from "../../../utils/classname-helpers";
 
 const animateOpts = {
   easing: "easeOutSine",
@@ -102,7 +102,7 @@ export const Modal = (_props: Props) => {
             />
             <div
               ref={cardRef}
-              class={css(
+              class={always(
                 "relative z-10 w-112 rounded-xl bg-grey-100 opacity-0 shadow-lg",
                 "dark:bg-raisin-400",
               )}

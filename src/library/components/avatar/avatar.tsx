@@ -1,7 +1,7 @@
 import { ParentProps, mergeProps, JSX } from "solid-js";
 import { twMerge } from "tailwind-merge";
 
-import { css, maybe } from "../../../utils/classname-helpers";
+import { always, maybe } from "../../../utils/classname-helpers";
 
 type Props = Pick<JSX.HTMLAttributes<HTMLDivElement>, "class" | "classList"> &
   ParentProps<{ src?: string; size?: "xs" | "sm" | "md" | "lg" }>;
@@ -13,11 +13,11 @@ export const Avatar = (_props: Props) => {
   return (
     <div
       class={twMerge(
-        css(
+        always(
           "inline-block align-middle",
-          maybe(props.size === "xs", "size-10"),
-          maybe(props.size === "sm", "size-14"),
-          maybe(props.size === "md", "size-20"),
+          maybe(props.size === "xs", "size-7"),
+          maybe(props.size === "sm", "size-9"),
+          maybe(props.size === "md", "size-16"),
           maybe(props.size === "lg", "size-28"),
         ),
         props.class,

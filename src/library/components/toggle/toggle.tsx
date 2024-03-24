@@ -1,5 +1,5 @@
 import { ParentProps, mergeProps, splitProps } from "solid-js";
-import { css, maybe, toggle } from "../../../utils/classname-helpers";
+import { always, maybe, toggle } from "../../../utils/classname-helpers";
 
 type Props = ParentProps<{
   ref?: HTMLDivElement;
@@ -23,7 +23,7 @@ export const Toggle = (_props: Props) => {
 
   return (
     <div
-      class={css(
+      class={always(
         "tl-toggle relative inline-block rounded-full",
         maybe(props.size === "sm", "h-6"),
         maybe(props.size === "md", "h-7"),
@@ -40,7 +40,7 @@ export const Toggle = (_props: Props) => {
         class="absolute left-2 top-2 opacity-0"
       />
       <div
-        class={css(
+        class={always(
           "relative inline-block h-full cursor-pointer rounded-full align-middle transition-colors",
           toggle(
             !props.checked,
@@ -59,7 +59,7 @@ export const Toggle = (_props: Props) => {
         }}
       >
         <div
-          class={css(
+          class={always(
             "absolute left-1 top-1 rounded-full bg-grey-100 transition-transform",
             "after:absolute after:rounded-full after:transition-colors after:content-['']",
             toggle(

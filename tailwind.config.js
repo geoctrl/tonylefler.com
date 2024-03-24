@@ -1,5 +1,6 @@
 import plugin from "tailwindcss/plugin";
 import tailwindBaseFontSize from "tailwindcss-base-font-size";
+import tailwindcssTypography from "@tailwindcss/typography";
 
 function px(px) {
   return `${px / 16}rem`;
@@ -14,10 +15,15 @@ export default {
       sans: ["Inter", "sans-serif"],
       mono: ["Victor Mono", "mono"],
     },
-    fontSize: {
-      sm: "1.2rem",
-      base: "1.4rem",
-      lg: "1.6rem",
+    borderRadius: {
+      sm: "6rem",
+      md: ".8rem",
+      lg: "1.2rem",
+      xl: "1.6rem",
+      "2xl": "2.4rem",
+      "3xl": "3.2rem",
+      "4xl": "4rem",
+      full: "99999px",
     },
     colors: {
       current: "currentColor",
@@ -101,17 +107,16 @@ export default {
         900: "#CDB19E",
       },
     },
-    borderRadius: {
-      sm: "6rem",
-      md: ".8rem",
-      lg: "1.2rem",
-      xl: "1.6rem",
-      "2xl": "2.4rem",
-      "3xl": "3.2rem",
-      "4xl": "4rem",
-      full: "99999px",
-    },
     extend: {
+      fontSize: {
+        sm: "1.2rem",
+        base: "1.4rem",
+        lg: "1.6rem",
+        xl: "1.8rem",
+        "2xl": "2rem",
+        "3xl": "2.4rem",
+        "4xl": "2.8rem",
+      },
       width: {
         18: `${(18 * 4) / 10}rem`,
         112: `${(112 * 4) / 10}rem`,
@@ -127,22 +132,52 @@ export default {
   },
   plugins: [
     tailwindBaseFontSize({ baseFontSize: 10 }),
+    tailwindcssTypography,
     plugin(function ({ addUtilities }) {
       addUtilities({
+        // form size
+        ".form-height-sm": {
+          height: "2.8rem",
+        },
+        ".form-height-md": {
+          height: "3.6rem",
+        },
+        ".form-height-lg": {
+          height: "4.4rem",
+        },
+        ".form-width-sm": {
+          width: "2.8rem",
+        },
+        ".form-width-md": {
+          width: "3.6rem",
+        },
+        ".form-width-lg": {
+          width: "4.4rem",
+        },
+        ".form-size-sm": {
+          width: "2.8rem",
+          height: "2.8rem",
+        },
+        ".form-size-md": {
+          width: "3.6rem",
+          height: "3.6rem",
+        },
+        ".form-size-lg": {
+          width: "4.4rem",
+          height: "4.4rem",
+        },
+
+        // app border
         ".app-border": {
           border: `solid .1rem var(--app-border)`,
         },
-        ".form-size-sm": {
-          height: "3.2rem",
-        },
-        ".form-size-md": {
-          height: "4rem",
-        },
-        ".form-size-lg": {
-          height: "4.8rem",
-        },
+
         ".text-title": {},
         ".text-lead": {},
+        ".text-label": {
+          "@apply mb-2 text-sm font-medium text-raisin-100 dark:text-grey-500":
+            {},
+        },
         // gradients
         ".gradient-1": {
           backgroundColor: "#F4D03F",

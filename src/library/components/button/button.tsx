@@ -5,7 +5,7 @@ import { tv } from "tailwind-variants";
 
 import { Icon, IconProps } from "../icon/icon";
 import { inlineSwitch } from "../../../utils/inline-switch";
-import { css } from "../../../utils/classname-helpers";
+import { always } from "../../../utils/classname-helpers";
 
 type ButtonBaseProps = ParentProps<{
   active?: boolean;
@@ -66,10 +66,11 @@ export const Button = (_props: ButtonProps) => {
     "variant",
   ]);
 
+  // icon size
   const size = inlineSwitch(
     props.size!,
     {
-      sm: "size-4",
+      sm: "size-3.5",
       md: "size-4",
       lg: "size-5",
     },
@@ -135,34 +136,34 @@ export const Button = (_props: ButtonProps) => {
 };
 
 const buttonClasses = tv({
-  base: "inline-flex select-none items-center whitespace-nowrap rounded-lg align-middle font-medium transition ease-out cursor-pointer",
+  base: "inline-flex select-none items-center whitespace-nowrap rounded-lg align-middle font-medium transition ease-out cursor-pointer shrink-0",
   variants: {
     variant: {
       primary:
         "bg-primary-500 text-grey-100 hover:bg-primary-600 active:bg-primary-700",
-      secondary: css(
+      secondary: always(
         "text-raisin-900 dark:text-grey-100 bg-raisin-500/10 hover:bg-raisin-500/20 active:bg-raisin-500/25",
         "dark:bg-grey-500/10 dark:text-grey-100 hover:dark:bg-grey-500/20 active:dark:bg-grey-500/25",
       ),
       secondaryColor:
         "bg-primary-500/10 text-primary-500 hover:bg-primary-500/20 active:bg-primary-500/25",
-      border: css(
+      border: always(
         "text-raisin-900 dark:text-grey-100 border border-solid border-grey-900/30 text-raisin-500 hover:border-grey-900/40 hover:bg-raisin-500/10 active:border-grey-900/50 active:bg-raisin-500/15",
         "dark:border-grey-100/50 dark:text-grey-100 dark:hover:bg-grey-500/10 dark:active:bg-grey-100/15",
       ),
-      tertiary: css(
+      tertiary: always(
         "text-raisin-900 dark:text-grey-100 hover:bg-raisin-500/10 active:bg-raisin-500/15",
         "dark:text-grey-100 hover:dark:bg-grey-100/10 dark:active:bg-grey-100/15",
       ),
-      listItem: css(
+      listItem: always(
         "text-raisin-900 dark:text-grey-100 focus:bg-raisin-500/15 active:bg-raisin-500/15 outline-none shadow-none",
         "dark:text-grey-100 dark:focus:bg-grey-100/15 dark:active:bg-grey-100/15",
       ),
     },
     size: {
-      sm: "gap-2 px-2.5 text-sm form-size-sm",
-      md: "gap-3 px-4 text-base form-size-md",
-      lg: "gap-4 px-5 text-lg form-size-lg",
+      sm: "gap-1.5 px-2.5 text-sm h-7",
+      md: "gap-2 px-3 text-base h-9",
+      lg: "gap-3 px-4 text-lg h-11",
     },
     alignContent: {
       left: "justify-start",
@@ -179,14 +180,14 @@ const buttonClasses = tv({
       true: "",
     },
     iconOnly: {
-      true: "px-0",
+      true: "p-0",
     },
   },
   compoundVariants: [
     // icon only width
-    { size: "sm", iconOnly: true, class: "w-8" },
-    { size: "md", iconOnly: true, class: "w-10" },
-    { size: "lg", iconOnly: true, class: "w-12" },
+    { size: "sm", iconOnly: true, class: `size-7 p-0` },
+    { size: "md", iconOnly: true, class: `size-9 p-0` },
+    { size: "lg", iconOnly: true, class: `size-11 p-0` },
     // active
     {
       variant: "primary",
@@ -196,7 +197,7 @@ const buttonClasses = tv({
     {
       variant: "secondary",
       active: true,
-      class: css(
+      class: always(
         "bg-raisin-500/25 hover:bg-raisin-500/25",
         "dark:bg-grey-500/25 hover:dark:bg-grey-500/25",
       ),
@@ -209,7 +210,7 @@ const buttonClasses = tv({
     {
       variant: "border",
       active: true,
-      class: css(
+      class: always(
         "border-grey-900/50 hover:border-grey-900/50 bg-raisin-500/15 hover:bg-raisin-500/15",
         "dark:bg-grey-100/15 dark:hover:bg-grey-100/15",
       ),
@@ -217,7 +218,7 @@ const buttonClasses = tv({
     {
       variant: "tertiary",
       active: true,
-      class: css(
+      class: always(
         "bg-raisin-500/15 hover:bg-raisin-500/15",
         "dark:bg-grey-100/15 dark:hover:bg-grey-100/15",
       ),

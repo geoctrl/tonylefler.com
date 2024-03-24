@@ -39,7 +39,7 @@ export const Dialog = (_props: Props) => {
       allowContentClicks
       renderTrigger={props.renderTrigger}
       backdrop
-      renderContent={() => (
+      renderContent={({ close }) => (
         <div
           style={{ width: `${numberSize / 10}rem` }}
           tabIndex={0}
@@ -51,8 +51,10 @@ export const Dialog = (_props: Props) => {
           <DialogHeader showCloseBtn={false} title="Delete Collection" />
           <DialogBody>This action cannot be undone.</DialogBody>
           <DialogFooter>
-            <Button block>Cancel</Button>
-            <Button variant="primary" block>
+            <Button block onClick={close}>
+              Cancel
+            </Button>
+            <Button variant="primary" block onClick={close}>
               Delete
             </Button>
           </DialogFooter>

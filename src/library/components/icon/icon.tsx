@@ -1,6 +1,6 @@
 import { ParentProps, mergeProps, splitProps } from "solid-js";
 import type { JSX } from "solid-js";
-import { css } from "../../../utils/classname-helpers";
+import { always } from "../../../utils/classname-helpers";
 
 export type IconProps = ParentProps<{
   name?: Icons;
@@ -16,7 +16,7 @@ export const Icon = (_props: IconProps) => {
     <svg
       {...rest}
       aria-hidden="true"
-      class={css(
+      class={always(
         "inline-block shrink-0 fill-current",
         props.class,
         props.class?.includes("size-") ? "" : "size-5",

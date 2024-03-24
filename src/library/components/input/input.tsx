@@ -1,6 +1,6 @@
 import { ParentProps, mergeProps, splitProps, Show } from "solid-js";
 import type { JSX } from "solid-js";
-import { css } from "../../../utils/classname-helpers";
+import { always } from "../../../utils/classname-helpers";
 import { ulid } from "ulid";
 import { tv } from "tailwind-variants";
 
@@ -35,14 +35,14 @@ export const Input = (_props: Props) => {
   const id = props.id || ulid();
   return (
     <div
-      class={css("align-middle", localProps.class)}
+      class={always("align-middle", localProps.class)}
       classList={localProps.classList}
       style={localProps.style}
     >
       <Show when={!!props.label}>
-        <label class="text-label" for={id}>
-          {props.label}
-        </label>
+        <div class="text-label">
+          <label for={id}>{props.label}</label>
+        </div>
       </Show>
       <input
         {...inputProps}
@@ -51,9 +51,9 @@ export const Input = (_props: Props) => {
           base: "block w-full border border-solid border-grey-500 align-middle text-base dark:border-grey-100/10 dark:bg-grey-100/5",
           variants: {
             size: {
-              sm: "rounded-md px-2 text-sm form-size-sm",
-              md: "rounded-lg px-3 form-size-md",
-              lg: "rounded-lg px-4 text-lg form-size-lg",
+              sm: "h-7 rounded-md px-2 text-sm",
+              md: "h-9 rounded-lg px-3",
+              lg: "h-11 rounded-lg px-4 text-lg",
             },
           },
         })({

@@ -10,7 +10,7 @@ import {
 import { Dynamic, Portal } from "solid-js/web";
 import { computePosition, flip, offset, Placement } from "@floating-ui/dom";
 import anime from "animejs/lib/anime.es";
-import { css, maybe } from "../../../utils/classname-helpers";
+import { always, maybe } from "../../../utils/classname-helpers";
 
 export type FloatContentOpts = { toggle: () => void };
 
@@ -28,12 +28,20 @@ export type FloatProps = {
   onKeyDown?: (e: KeyboardEvent) => void;
   onOpen?: (contentRef: HTMLDivElement) => void;
   onToggle?: (isOpen: boolean) => void;
-  renderContent: (opts: { isOpen: Accessor<boolean> }) => JSX.Element;
+  renderContent: (opts: {
+    isOpen: Accessor<boolean>;
+    close: () => void;
+  }) => JSX.Element;
   renderTrigger: (
     floatProps: {
       ref: (el: HTMLElement) => void;
     },
-    opts: { isOpen: Accessor<boolean> },
+    opts: {
+      isOpen: Accessor<boolean>;
+      open: () => void;
+      toggle: () => void;
+      close: () => void;
+    },
   ) => JSX.Element;
   triggerHover?: boolean;
 };
@@ -77,53 +85,58 @@ export const Float = (_props: FloatProps) => {
     }
   }
 
-  function toggle() {
-    const nextIsOpen = !isOpen();
-    if (!nextIsOpen) {
-      maybeRefocusTrigger();
-    }
-    setIsOpen(nextIsOpen);
+  function open() {
+    setIsOpen(true);
+    document.addEventListener("click", onDocumentClick);
 
-    if (nextIsOpen) {
-      document.addEventListener("click", onDocumentClick);
+    const trigger = triggerRef as HTMLElement;
+    const content = contentRef as HTMLElement;
+    computePosition(trigger, content, {
+      placement: props.placement || "bottom-start",
+      middleware: [
+        flip(),
+        offset(
+          props.coverTrigger && triggerRef
+            ? -triggerRef.getBoundingClientRect().height
+            : 7,
+        ),
+      ],
+    }).then(({ x, y }) => {
+      anime({
+        targets: contentRef,
+        opacity: [0, 1],
+        easing: "easeOutSine",
+        scale: [0.8, 1],
+        duration: 150,
+      });
 
-      const trigger = triggerRef as HTMLElement;
-      const content = contentRef as HTMLElement;
-      computePosition(trigger, content, {
-        placement: props.placement || "bottom-start",
-        middleware: [
-          flip(),
-          offset(
-            props.coverTrigger && triggerRef
-              ? -triggerRef.getBoundingClientRect().height
-              : 7,
-          ),
-        ],
-      }).then(({ x, y }) => {
+      if (props.backdrop) {
         anime({
-          targets: contentRef,
+          targets: backdropRef,
           opacity: [0, 1],
           easing: "easeOutSine",
-          scale: [0.8, 1],
           duration: 150,
         });
+      }
 
-        if (props.backdrop) {
-          anime({
-            targets: backdropRef,
-            opacity: [0, 1],
-            easing: "easeOutSine",
-            duration: 150,
-          });
-        }
-
-        Object.assign(content.style, {
-          top: `${y}px`,
-          left: `${x}px`,
-        });
+      Object.assign(content.style, {
+        top: `${y}px`,
+        left: `${x}px`,
       });
+    });
+  }
+
+  function close() {
+    maybeRefocusTrigger();
+    setIsOpen(false);
+    document.removeEventListener("click", onDocumentClick);
+  }
+
+  function toggle() {
+    if (!isOpen()) {
+      open();
     } else {
-      document.removeEventListener("click", onDocumentClick);
+      close();
     }
   }
 
@@ -168,7 +181,10 @@ export const Float = (_props: FloatProps) => {
     <>
       <Dynamic
         component={() =>
-          props.renderTrigger({ ref: setTriggerRef }, { isOpen })
+          props.renderTrigger(
+            { ref: setTriggerRef },
+            { isOpen, close, open, toggle },
+          )
         }
       />
       <Show when={isOpen()}>
@@ -181,13 +197,13 @@ export const Float = (_props: FloatProps) => {
           </Show>
           <div
             ref={(el) => setContentRef(el)}
-            class={css(
+            class={always(
               "absolute left-0 top-0 w-max rounded-xl bg-grey-100 shadow-lg",
               "dark:bg-raisin-400",
-              maybe(!props.backdrop, "app-border border"),
+              maybe(!props.backdrop, "border app-border"),
             )}
           >
-            <Dynamic component={() => props.renderContent({ isOpen })} />
+            <Dynamic component={() => props.renderContent({ isOpen, close })} />
           </div>
         </Portal>
       </Show>

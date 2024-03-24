@@ -1,7 +1,5 @@
-import { twMerge } from "tailwind-merge";
-
-export const css = (...args: (string | undefined)[]): string => {
-  return twMerge(args.filter(Boolean).join(" "));
+export const always = (...args: (string | undefined)[]): string => {
+  return args.filter(Boolean).join(" ");
 };
 
 export const maybe = (
@@ -21,4 +19,4 @@ export const toggle = (
   return enabled ? one : two;
 };
 
-export { css as c, maybe as m, toggle as t };
+export { always as a, maybe as m, toggle as t };

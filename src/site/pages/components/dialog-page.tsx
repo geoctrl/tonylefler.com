@@ -9,6 +9,7 @@ export const DialogPage = (_props: Props) => {
   const props = mergeProps(defaultProps, _props);
   return (
     <div>
+      <h1>Dialog</h1>
       <Dialog
         renderTrigger={(floatProps) => (
           <Button {...floatProps}>Delete Collection</Button>

@@ -10,24 +10,9 @@ const defaultProps: Partial<Props> = {};
 export const DemoPage = (_props: Props) => {
   const props = mergeProps(defaultProps, _props);
   return (
-    <>
+    <div class="flex h-screen flex-col">
       <AppHeader />
-      <div class="p-8">
-        <div class="flex gap-4">
-          <div class="w-40 shrink-0">
-            <Button
-              block
-              alignContent="left"
-              variant="tertiary"
-              as={A}
-              href="/demos/music-app"
-            >
-              Music App
-            </Button>
-          </div>
-          <div class="shrink">{props.children}</div>
-        </div>
-      </div>
-    </>
+      <div class="grow">{props.children}</div>
+    </div>
   );
 };

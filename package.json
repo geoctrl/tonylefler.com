@@ -13,6 +13,7 @@
     "@mdx-js/rollup": "^3.0.1",
     "@rollup/plugin-alias": "^5.1.0",
     "@spiriit/vite-plugin-svg-spritemap": "^2.2.4",
+    "@tailwindcss/typography": "^0.5.10",
     "@types/animejs": "^3",
     "@types/node": "^20.11.16",
     "autoprefixer": "^10.4.17",

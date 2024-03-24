@@ -92,12 +92,21 @@ export const ComponentsPage = (_props: Props) => {
               alignContent="left"
               variant="tertiary"
               as={A}
+              href="/components/range-slider"
+            >
+              Range Slider
+            </Button>
+            <Button
+              block
+              alignContent="left"
+              variant="tertiary"
+              as={A}
               href="/components/toggle"
             >
               Toggle
             </Button>
           </div>
-          <div class="shrink">{props.children}</div>
+          <div class="grow">{props.children}</div>
         </div>
       </div>
     </>

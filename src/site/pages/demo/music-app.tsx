@@ -1,48 +1,65 @@
-import { ParentProps, mergeProps } from "solid-js";
+import { Button, Icon, Menu, MenuButton, RangeSlider } from "@stem/components";
+import cover from "../../assets/cover-art/echoes-of-the-void.png";
 
-import { Button } from "@stem/components";
-import { DarkModeToggle } from "../../components/dark-mode-toggle";
-
-type Props = ParentProps<{}>;
-
-const defaultProps: Partial<Props> = {};
-
-export const MusicApp = (_props: Props) => {
-  const props = mergeProps(defaultProps, _props);
+export const MusicApp = () => {
   return (
-    <div class="flex h-screen gap-4 p-6">
-      <div class="grow">
-        <div class="flex items-center justify-between">
-          <div>
-            logo <DarkModeToggle />
-          </div>
-          <div class="flex grow justify-center gap-4">
-            <Button size="sm" variant="tertiary">
-              Rankings
-            </Button>
+    <div class="flex h-full flex-col">
+      <div class="flex items-center justify-between p-4">
+        <Button
+          iconOnly={{ name: "angle-down-regular", class: "pt-0.5" }}
+          variant="tertiary"
+        />
+        <div class="font-bold">Now Playing</div>
+        <Menu
+          renderTrigger={(floatProps) => (
             <Button
-              size="sm"
+              iconOnly="ellipsis-regular"
               variant="tertiary"
-              active
-              iconRight="xmark-regular"
-            >
-              Browse
-            </Button>
-            <Button size="sm" variant="tertiary">
-              For You
-            </Button>
-            <Button size="sm" variant="tertiary">
-              My Library
-            </Button>
-            <Button
-              size="sm"
-              variant="tertiary"
-              iconOnly="magnifying-glass-regular"
+              {...floatProps}
             />
-          </div>
+          )}
+        >
+          <MenuButton>options go here</MenuButton>
+        </Menu>
+      </div>
+      <div class="flex grow items-center justify-center px-4">
+        <div class="max-h-[700px] max-w-[700px] overflow-hidden rounded-xl object-fill">
+          <img src={cover} alt="" />
         </div>
       </div>
-      <div class="w-112 rounded-3xl bg-grey-200 dark:bg-raisin-400">right</div>
+      <div class="flex flex-col gap-4 px-4">
+        <div class="flex justify-between  align-bottom">
+          <div>
+            <div class="text-2xl">now i know</div>
+            <div class="text-sm">Sarah Kang</div>
+          </div>
+          <div class="flex items-center gap-2">
+            <Button iconOnly="thumbs-down-regular" variant="tertiary" />
+            <Button iconOnly="thumbs-up-regular" variant="tertiary" />
+          </div>
+        </div>
+        <div class="py-2">
+          <RangeSlider progress={50} size="sm" />
+        </div>
+        <div class="flex items-center justify-center gap-4">
+          <Button
+            iconOnly="backward-step-solid"
+            class="h-12 w-12 rounded-full"
+            variant="tertiary"
+          />
+          <Button
+            iconOnly={{ name: "play-solid", class: "size-6" }}
+            class="h-16 w-16 rounded-full"
+            variant="tertiary"
+          />
+          <Button
+            iconOnly="forward-step-solid"
+            class="h-12 w-12 rounded-full"
+            variant="tertiary"
+          />
+        </div>
+      </div>
+      <div>lyrics</div>
     </div>
   );
 };

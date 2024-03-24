@@ -16,4 +16,5 @@ export * from "./modal/modal-body";
 export * from "./modal/modal-context";
 export * from "./modal/modal-footer";
 export * from "./modal/modal-header";
+export * from "./range-slider/range-slider";
 export * from "./toggle/toggle";

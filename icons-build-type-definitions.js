@@ -5,8 +5,9 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-let output = `// auto-generated icon type definitions from /icons-build-type-definitions.js
+let typeOutput = `// auto-generated icon type definitions from /icons-build-type-definitions.js
 declare type Icons = `;
+let arrayOutput = `export const iconMap = [`;
 const iconNames = [];
 
 (async () => {
@@ -15,6 +16,14 @@ const iconNames = [];
     iconNames.push(`"${icon.replace(".svg", "")}"`);
   });
 
-  output += `${iconNames.join(" | ")};\n`;
-  await fs.writeFile(path.resolve(__dirname, "src/types/icon.d.ts"), output);
+  typeOutput += `${iconNames.join(" | ")};\n`;
+  arrayOutput += `${iconNames.join(",")}];`;
+  await fs.writeFile(
+    path.resolve(__dirname, "src/types/icon.d.ts"),
+    typeOutput,
+  );
+  await fs.writeFile(
+    path.resolve(__dirname, "src/utils/icon-list.ts"),
+    arrayOutput,
+  );
 })();
