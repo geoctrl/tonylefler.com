@@ -1,7 +1,7 @@
 import { Route, Router } from "@solidjs/router";
 import { Home } from "./site/pages/home";
 import { ButtonPage } from "./site/pages/components/button-page";
-import { MusicApp } from "./site/pages/demo/music-app";
+import { MusicApp } from "./site/pages/demo/music-app/music-app";
 import { AvatarPage } from "./site/pages/components/avatar-page";
 import { ComponentsPage } from "./site/pages/components/components-page";
 import { DemoPage } from "./site/pages/demo/demo-page";

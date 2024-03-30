@@ -39,7 +39,6 @@ export const RangeSlider = (_props: Props) => {
     if (handleEl && containerEl && trackEl) {
       let clientX;
       if ((e as MouseEvent).clientX) {
-        console.log("here?");
         clientX = (e as MouseEvent).clientX;
       } else if ((e as TouchEvent).touches?.length === 1) {
         clientX = (e as TouchEvent).touches[0]?.clientX;
@@ -85,7 +84,7 @@ export const RangeSlider = (_props: Props) => {
         props.min! + (displayPercentage / 100) * (props.max! - props.min!),
       );
 
-      handleEl.style.left = `${x}px`;
+      handleEl.style.left = `${displayPercentage}%`;
       trackEl.style.width = `${displayPercentageTrack}%`;
       trackValue = nextValue;
       if (!firstLoad && props.value !== nextValue) {
@@ -142,8 +141,6 @@ export const RangeSlider = (_props: Props) => {
   onMount(() => {
     if (containerEl && handleEl && trackEl) {
       stateChange(true);
-      // handleEl.style.left = `${props.value}%`;
-      // trackEl.style.width = `${props.value}%`;
       handleEl.addEventListener("mousedown", mouseDown);
       handleEl.addEventListener("touchstart", mouseDown);
       containerEl.addEventListener("mousedown", mouseDown);
@@ -191,6 +188,7 @@ export const RangeSlider = (_props: Props) => {
             "absolute size-5 rounded-full border-2 border-grey-100 bg-primary-500",
             "dark:bg-grey-100",
           )}
+          style={{ left: "100%" }}
         />
       </div>
       <div
